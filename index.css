@@ -1,4 +1,79 @@
 html, body {
     margin: 0;
     padding: 0;
+    
+    font-family: 'Rubik', sans-serif;
+    background-color: #EEF0F4;
+
+    user-select: none;
+   
+}
+
+input {
+    color: #432000;
+    background-color: #DCE1EB;
+    text-align: center;
+}
+
+button {
+    color: #FDFDFD;
+    background-color: #AC485A; 
+}
+
+button:hover {
+    background-color: #432000;
+}
+
+li:hover {
+    background-color: #FFECC7;
+
+}
+
+input, button {
+    border-radius: 6px;
+    border: 0;
+    height: 60px;
+    font-family: 'Rubik', sans-serif;
+    font-size: 20px;
+}
+
+input::placeholder {
+    opacity: 40%;
+}
+
+img {
+    width: 200px;
+    margin: 0 auto;
+
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    max-width: 320px;
+    margin: 30px auto;
+    gap: 10px;
+}
+
+ul {
+    list-style-type: none;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+li {
+    background-color: #FFFDF8;
+    box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.2);
+    padding: 16px;
+    border-radius: 6px;
+    flex-grow: 1;
+    text-align: center;
+    color: #593730;
+    font-size: 20px;
+}
+
+.message {
+    text-align: center;
 }
