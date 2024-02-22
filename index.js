@@ -32,7 +32,7 @@ onValue(shoppingListInDB, function(snapshot) {
             appendToShoppingList(item)
         })
     } else {
-        shoppingListEl.innerHTML = `No items added yet.`
+        shoppingListEl.innerHTML = `<p> No items added yet.</p>`
     }
 
 })
