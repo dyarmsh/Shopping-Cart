@@ -27,7 +27,7 @@ onValue(shoppingListInDB, function(snapshot) {
     if (snapshot.exists()) {
         let itemsArray = Object.entries(snapshot.val())
 
-        shoppingListEl.textContent = ""
+        shoppingListEl.innerHTML = ""
         itemsArray.forEach((item) => {
             appendToShoppingList(item)
         })
