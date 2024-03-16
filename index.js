@@ -17,9 +17,14 @@ const containerEl = document.getElementById("container2")
 // adding to cart lists the item below
 addToCartBtn.addEventListener("click", function() {
     const inputValue = inputFieldEl.value
-    push(shoppingListInDB, inputValue)
 
-    inputFieldEl.value = ""
+    if ((inputValue !== null || inputValue !== "")) {
+        push(shoppingListInDB, inputValue)
+        inputFieldEl.value = ""
+    } else {
+        alert("Enter an item!")
+    }
+
 })
 
 // clicking on the item cards removes it from the database and DOM
@@ -50,6 +55,7 @@ function appendToShoppingList(item) {
         remove(locationOfItemInDB)
     })
 
+    // shoppingListEl.insertBefore(item, shoppingListEl.childNodes[0]);
     shoppingListEl.append(newListEl)
 
 
