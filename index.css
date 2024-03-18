@@ -15,12 +15,12 @@ input {
     text-align: center;
 }
 
-button {
+#add-button {
     color: #FDFDFD;
     background-color: #EF5452; 
 }
 
-button:hover {
+#add-button:hover {
     background-color: #E52D2D;
 }
 
@@ -79,3 +79,21 @@ p {
     opacity: 50%;
 }
 
+.provider-btn {
+    margin: 0 auto;
+    margin-top: 30px;
+    color: var(--dark-color);
+    background-color: var(--light-color);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.5em;
+    padding: 20px;
+    border: solid 1.5px lightgray;
+}
+
+
+.google-btn-logo {
+    width: 1.375em;
+    margin-top: 0;
+}

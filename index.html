@@ -19,15 +19,27 @@
         <link rel="stylesheet" href="index.css">
     </head>
     <body>
-        <div class="container">
-            <img src="assets/cat.jpg">
-            <input type="text" id="input-field" placeholder="Bread">
-            <button id="add-button">Add to cart</button>
-            <div class="container2">
-                <ul id="shopping-list"> 
-                </ul>
+        <section id="logged-out-view">
+            <div class="provider-buttons">
+                <button id="sign-in-with-google-btn" class="provider-btn">
+                    <img src="assets/google.png" class="google-btn-logo">
+                    Sign in with Google
+                </button>
             </div>
-        </div>
+        </section>
+
+
+        <section id="logged-in-view">
+            <div class="container">
+                <img src="assets/cat.jpg">
+                <input type="text" id="input-field" placeholder="Bread">
+                <button id="add-button">Add to cart</button>
+                <div class="container2">
+                    <ul id="shopping-list"> 
+                    </ul>
+                </div>
+            </div>
+        </section>
         
         <script src="index.js" type="module"></script>
     </body>
