@@ -7,7 +7,7 @@ let appSettings = {
 }
 
 const myApp = initializeApp(appSettings)
-const myAuth = getAuth(myApp)
+// const myAuth = getAuth(myApp)
 const provider = new GoogleAuthProvider()
 const myDatabase = getDatabase(myApp)
 const shoppingListInDB = ref(myDatabase, "shoppingList")
@@ -19,25 +19,25 @@ const signInWithGoogleEl = document.getElementById("sign-in-with-google-btn")
 const viewLoggedIn = document.getElementById("view-logged-in")
 const viewLoggedOut = document.getElementById("view-logged-out")
 
-onAuthStateChanged(auth, (user) => {
-    if (user) {
-      viewLoggedIn.style.display = "block"
-      viewLoggedOut.style.display = "none"
+// onAuthStateChanged(auth, (user) => {
+//     if (user) {
+//       viewLoggedIn.style.display = "block"
+//       viewLoggedOut.style.display = "none"
   
-    } else {
-      viewLoggedIn.style.display = "none"
-      viewLoggedOut.style.display = "block"
-    }
-  })
+//     } else {
+//       viewLoggedIn.style.display = "none"
+//       viewLoggedOut.style.display = "block"
+//     }
+//   })
   
-  signInWithGoogleEl.addEventListener("click", function() {
-    signInWithPopup(auth, provider)
-      .then((result) => {
-        console.log("Yay it worked")
-      }).catch((error) => {
-        console.log("Nooo it didnt work")
-      })
-  })
+  // signInWithGoogleEl.addEventListener("click", function() {
+  //   signInWithPopup(auth, provider)
+  //     .then((result) => {
+  //       console.log("Yay it worked")
+  //     }).catch((error) => {
+  //       console.log("Nooo it didnt work")
+  //     })
+  // })
 
 // adding to cart lists the item below
 addToCartBtn.addEventListener("click", function() {
