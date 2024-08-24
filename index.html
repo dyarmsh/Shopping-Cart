@@ -20,6 +20,11 @@
     </head>
     <body>
         <section id="logged-out-view">
+            <div class="header">
+                <img src="assets/cat.gif">
+                <h2>My Shopping List</h2>
+                <p>A minimal app to track your grocery list</p>
+            </div>
             <div class="provider-buttons">
                 <button id="sign-in-with-google-btn" class="provider-btn">
                     <img src="assets/google.png" class="google-btn-logo">
@@ -37,13 +42,15 @@
                 <img src="assets/cat.gif">
                 <input type="text" id="input-field" placeholder="Bread">
                 <button id="add-button">Add to cart</button>
-                <div class="alert-section">
-                    <p>Add an item!</p>
                 </div>
                 <div class="container2">
+                    <div class="alert-section">
+                        <p id="delete-info" class="hidden">Tap on a card to 🗑️ </p>
+                    </div>
                     <ul id="shopping-list"> 
                     </ul>
                 </div>
+
             </div>
         </section>
         

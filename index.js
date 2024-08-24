@@ -17,6 +17,8 @@ const database = getDatabase(app)
 const viewLoggedIn = document.getElementById("logged-in-view")
 const viewLoggedOut = document.getElementById("logged-out-view")
 const alertSection = document.getElementsByClassName("alert-sec")
+const deleteInfoEl = document.getElementById("delete-info");
+
 
 const inputFieldEl = document.getElementById("input-field")
 const addToCartBtn = document.getElementById("add-button")
@@ -77,8 +79,10 @@ function fetchFromDB() {
             itemsArray.forEach((item) => {
                 appendToShoppingList(item)
             })
+            deleteInfoEl.classList.remove("hidden");
         } else {
             shoppingListEl.innerHTML = `<p> No items added yet.</p>`
+            deleteInfoEl.classList.add("hidden");
         }
 
     })

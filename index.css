@@ -8,18 +8,31 @@ html {
 #logged-in-view {
     display: flex;
     flex-direction: column;
-    max-width: 320px;
+    justify-content: center;
     margin: 30px auto;
-    gap: 10px;
+    max-width: 320px;
+    
+}
+
+.header {
+    text-align: center;
 }
 
 #logged-out-view {
-    display: block;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin: 30px auto;
 }
 
 .alert-section {
+    margin-top: 16px;
+    opacity: 55%;
+    display: flex;
+    justify-content: center; /* Centers horizontally */
+}
+.hidden {
     display: none;
-    color: #EF5452;
 }
 
 input {
@@ -94,15 +107,17 @@ p {
 
 .provider-btn {
     margin: 0 auto;
-    margin-top: 30px;
+    margin-top: 16px;
     color: var(--dark-color);
     background-color: var(--light-color);
     display: flex;
     justify-content: center;
     align-items: center;
     gap: 0.5em;
-    padding: 20px;
+    padding: 0px 16px;
     border: solid 1.5px lightgray;
+    font-size: 16px;
+    height: 44px;
 }
 
 
