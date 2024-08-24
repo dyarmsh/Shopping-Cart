@@ -16,6 +16,7 @@ const database = getDatabase(app)
 
 const viewLoggedIn = document.getElementById("logged-in-view")
 const viewLoggedOut = document.getElementById("logged-out-view")
+const alertSection = document.getElementsByClassName("alert-sec")
 
 const inputFieldEl = document.getElementById("input-field")
 const addToCartBtn = document.getElementById("add-button")
@@ -55,7 +56,7 @@ addToCartBtn.addEventListener("click", function() {
     const inputValue = inputFieldEl.value
     const userShoppingListInDB = ref(database, `users/${auth.currentUser.uid}/shoppingList`)
 
-    if ((inputValue !== null || inputValue !== "")) {
+    if (inputValue !== "") {
         push(userShoppingListInDB, inputValue)
         inputFieldEl.value = ""
     } else {

@@ -13,6 +13,11 @@ html {
     display: block;
 }
 
+.alert-section {
+    display: none;
+    color: #EF5452;
+}
+
 input {
     color: #432000;
     background-color: #DCE1EB;
