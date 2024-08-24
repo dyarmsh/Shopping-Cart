@@ -31,6 +31,7 @@ html {
     display: flex;
     justify-content: center; /* Centers horizontally */
 }
+
 .hidden {
     display: none;
 }
@@ -136,4 +137,12 @@ p {
     height: 24px;
     width: 24px;
     cursor: pointer;
+}
+
+.footer {
+    text-align: center;  
+    position: fixed;
+    bottom: 16px;
+    width: 100%;
+    font-size: 12px;
 }
