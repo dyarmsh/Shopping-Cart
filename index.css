@@ -6,7 +6,11 @@ html {
 }
 
 #logged-in-view {
-    display: block;
+    display: flex;
+    flex-direction: column;
+    max-width: 320px;
+    margin: 30px auto;
+    gap: 10px;
 }
 
 #logged-out-view {
@@ -107,8 +111,13 @@ p {
     margin-top: 0;
 }
 
+.log-out {
+    display: flex;
+    justify-content: end;
+}
 
 #log-out-button {
+    position: absolute;
     height: 24px;
     width: 24px;
     cursor: pointer;
