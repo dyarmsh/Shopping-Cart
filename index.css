@@ -9,7 +9,7 @@ html {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    margin: 30px auto;
+    margin: 0px auto;
     max-width: 320px;
     
 }
