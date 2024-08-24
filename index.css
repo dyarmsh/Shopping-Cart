@@ -1,12 +1,16 @@
-html, body {
-    margin: 0;
-    padding: 0;
-    
+html {
     font-family: 'Space Grotesk', sans-serif;
     background-color: #F8F8F8;
 
     user-select: none;
-   
+}
+
+#logged-in-view {
+    display: block;
+}
+
+#logged-out-view {
+    display: block;
 }
 
 input {
@@ -96,4 +100,13 @@ p {
 .google-btn-logo {
     width: 1.375em;
     margin-top: 0;
+}
+
+
+#log-out-button {
+    position: relative;
+    right: 100px; /* Adjust as needed */
+    height: 24px;
+    width: 24px;
+    cursor: pointer;
 }

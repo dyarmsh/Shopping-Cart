@@ -1,50 +1,62 @@
-import { initializeApp } from "https://www.gstatic.com/firebasejs/9.15.0/firebase-app.js"
-import { getDatabase, ref, push, onValue, remove } from "https://www.gstatic.com/firebasejs/9.15.0/firebase-database.js"
-import { getAuth, GoogleAuthProvider, onAuthStateChanged, signInWithPopup, signOut} from "https://www.gstatic.com/firebasejs/10.9.0/firebase-auth.js"
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.11.1/firebase-app.js"
+import { getDatabase, ref, push, onValue, remove } from "https://www.gstatic.com/firebasejs/10.11.1/firebase-database.js"
+import { getAuth, GoogleAuthProvider, onAuthStateChanged, signInWithPopup, signOut} from "https://www.gstatic.com/firebasejs/10.11.1/firebase-auth.js"
 
 let appSettings = {
+    apiKey: "AIzaSyDJUFOSg9VWWuMDyHFW8KSXpYBFLh3Tp20",
+    authDomain: "shopping-cart-app-55ad7.firebaseapp.com",
     databaseURL: "https://shopping-cart-app-55ad7-default-rtdb.asia-southeast1.firebasedatabase.app/"
 }
 
-const myApp = initializeApp(appSettings)
-// const myAuth = getAuth(myApp)
+const app = initializeApp(appSettings)
+const auth = getAuth(app)
 const provider = new GoogleAuthProvider()
-const myDatabase = getDatabase(myApp)
-const shoppingListInDB = ref(myDatabase, "shoppingList")
+const database = getDatabase(app)
+
+
+const viewLoggedIn = document.getElementById("logged-in-view")
+const viewLoggedOut = document.getElementById("logged-out-view")
 
 const inputFieldEl = document.getElementById("input-field")
 const addToCartBtn = document.getElementById("add-button")
 const shoppingListEl = document.getElementById("shopping-list")
-const signInWithGoogleEl = document.getElementById("sign-in-with-google-btn")
-const viewLoggedIn = document.getElementById("view-logged-in")
-const viewLoggedOut = document.getElementById("view-logged-out")
 
-// onAuthStateChanged(auth, (user) => {
-//     if (user) {
-//       viewLoggedIn.style.display = "block"
-//       viewLoggedOut.style.display = "none"
+const signInWithGoogleEl = document.getElementById("sign-in-with-google-btn")
+const logOutButtonEl = document.getElementById("log-out-button")
+
+signInWithGoogleEl.addEventListener("click", function() {
+    signInWithPopup(auth, provider)
+        .then((result) => {
+        console.log("Yay it worked")
+        }).catch((error) => {
+        console.log("Nooo it didnt work")
+        })
+})
+
+logOutButtonEl.addEventListener("click", function() {
+    signOut(auth)
+})
+
+onAuthStateChanged(auth, (user) => {
+    if (user) {
+      viewLoggedIn.style.display = "block"
+      viewLoggedOut.style.display = "none"
+      fetchFromDB()
   
-//     } else {
-//       viewLoggedIn.style.display = "none"
-//       viewLoggedOut.style.display = "block"
-//     }
-//   })
+    } else {
+      viewLoggedIn.style.display = "none"
+      viewLoggedOut.style.display = "block"
+    }
+  })
   
-  // signInWithGoogleEl.addEventListener("click", function() {
-  //   signInWithPopup(auth, provider)
-  //     .then((result) => {
-  //       console.log("Yay it worked")
-  //     }).catch((error) => {
-  //       console.log("Nooo it didnt work")
-  //     })
-  // })
 
 // adding to cart lists the item below
 addToCartBtn.addEventListener("click", function() {
     const inputValue = inputFieldEl.value
+    const userShoppingListInDB = ref(database, `users/${auth.currentUser.uid}/shoppingList`)
 
     if ((inputValue !== null || inputValue !== "")) {
-        push(shoppingListInDB, inputValue)
+        push(userShoppingListInDB, inputValue)
         inputFieldEl.value = ""
     } else {
         alert("Enter an item!")
@@ -52,20 +64,25 @@ addToCartBtn.addEventListener("click", function() {
 
 })
 
-// clicking on the item cards removes it from the database and DOM
-onValue(shoppingListInDB, function(snapshot) {
-    if (snapshot.exists()) {
-        let itemsArray = Object.entries(snapshot.val())
+function fetchFromDB() {
+    const userShoppingListInDB = ref(database, `users/${auth.currentUser.uid}/shoppingList`)
 
-        shoppingListEl.innerHTML = ""
-        itemsArray.forEach((item) => {
-            appendToShoppingList(item)
-        })
-    } else {
-        shoppingListEl.innerHTML = `<p> No items added yet.</p>`
-    }
+    // clicking on the item cards removes it from the database and DOM
+    onValue(userShoppingListInDB, function(snapshot) {
+        if (snapshot.exists()) {
+            let itemsArray = Object.entries(snapshot.val())
 
-})
+            shoppingListEl.innerHTML = ""
+            itemsArray.forEach((item) => {
+                appendToShoppingList(item)
+            })
+        } else {
+            shoppingListEl.innerHTML = `<p> No items added yet.</p>`
+        }
+
+    })
+}
+
 
 function appendToShoppingList(item) {
     // shoppingListEl.innerHTML += `<li>${item}</li>`
@@ -76,7 +93,7 @@ function appendToShoppingList(item) {
     newListEl.textContent = itemValue
 
     newListEl.addEventListener("click", function() {
-        let locationOfItemInDB = ref(myDatabase, `shoppingList/${itemID}`)
+        let locationOfItemInDB = ref(database, `users/${auth.currentUser.uid}/shoppingList/${itemID}`)
         remove(locationOfItemInDB)
     })
 
