@@ -25,12 +25,12 @@ input {
 }
 
 #add-button {
-    color: #FDFDFD;
-    background-color: #EF5452; 
+    color: rgb(22, 22, 22);
+    background-color:#D9B1FF; 
 }
 
 #add-button:hover {
-    background-color: #E52D2D;
+    background-color: #E6CAFF;
 }
 
 li:hover {
@@ -51,7 +51,7 @@ input::placeholder {
 }
 
 img {
-    width: 250px;
+    width: 200px;
     margin: 0 auto;
     margin-top: 30px;
 }
@@ -109,8 +109,6 @@ p {
 
 
 #log-out-button {
-    position: relative;
-    right: 100px; /* Adjust as needed */
     height: 24px;
     width: 24px;
     cursor: pointer;
